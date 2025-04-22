@@ -1,0 +1,17 @@
+name: my
+description: "More power Less code"
+version: 1.0.0+1
+repository: https://github.com/sakiatu/my
+
+environment:
+  sdk: '>=3.3.2 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_lints: ^3.0.2
+
