@@ -40,7 +40,8 @@ class MyLoadingEffect extends StatefulWidget {
 }
 
 /// The state class for [MyLoadingEffect] that manages the animation.
-class _MyLoadingEffectState extends State<MyLoadingEffect> with SingleTickerProviderStateMixin {
+class _MyLoadingEffectState extends State<MyLoadingEffect>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -49,10 +50,12 @@ class _MyLoadingEffectState extends State<MyLoadingEffect> with SingleTickerProv
     super.initState();
 
     /// Initializes the animation controller and sets it to repeat.
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat(reverse: true);
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat(reverse: true);
 
     /// Creates a tween animation for the shimmer effect.
-    _animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _animation = Tween<double>(begin: 0, end: 1)
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -68,13 +71,19 @@ class _MyLoadingEffectState extends State<MyLoadingEffect> with SingleTickerProv
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     // Set default colors based on theme
-    final effectiveBaseColor = widget.baseColor ?? (isDarkMode ? Colors.grey[800]! : Colors.grey[300]!);
-    final effectiveHighlightColor = widget.highlightColor ?? (isDarkMode ? Colors.grey[600]! : Colors.grey[100]!);
+    final effectiveBaseColor = widget.baseColor ??
+        (isDarkMode ? Colors.grey[800]! : Colors.grey[300]!);
+    final effectiveHighlightColor = widget.highlightColor ??
+        (isDarkMode ? Colors.grey[600]! : Colors.grey[100]!);
 
     return ShaderMask(
         shaderCallback: (bounds) {
           return LinearGradient(
-            colors: [effectiveBaseColor, effectiveHighlightColor, effectiveBaseColor],
+            colors: [
+              effectiveBaseColor,
+              effectiveHighlightColor,
+              effectiveBaseColor
+            ],
             stops: [0.0, _animation.value, 1.0],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,

@@ -45,31 +45,41 @@ extension ContextNavigationExtension on BuildContext {
   void back() => Navigator.of(this).pop();
 
   /// Pushes a new page onto the navigator.
-  Future<T?> to<T extends Object?>(Widget page) => Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => page));
+  Future<T?> to<T extends Object?>(Widget page) =>
+      Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => page));
 
   /// Replaces the current route with a new page.
   Future<T?> toReplace<T extends Object?, TO extends Object?>(Widget page) =>
-      Navigator.of(this).pushReplacement<T, TO>(MaterialPageRoute(builder: (_) => page));
+      Navigator.of(this)
+          .pushReplacement<T, TO>(MaterialPageRoute(builder: (_) => page));
 
   /// Pushes a new page onto the navigator and removes all the previous routes.
   /// Using `(route) => false` removes all routes below the new one.
   Future<T?> toRemoveUntil<T extends Object?>(Widget page) =>
-      Navigator.of(this).pushAndRemoveUntil<T>(MaterialPageRoute(builder: (_) => page), (route) => false);
+      Navigator.of(this).pushAndRemoveUntil<T>(
+          MaterialPageRoute(builder: (_) => page), (route) => false);
 
   /// Pushes a new named route onto the navigator.
-  Future<T?> toNamed<T extends Object?>(String routeName, {Object? arguments}) =>
+  Future<T?> toNamed<T extends Object?>(String routeName,
+          {Object? arguments}) =>
       Navigator.of(this).pushNamed<T>(routeName, arguments: arguments);
 
   /// Pushes a new named route onto the navigator and removes all the previous routes.
   /// Using `(route) => false` removes all routes below the new one.
-  Future<T?> toNamedRemoveUntil<T extends Object?>(String routeName, {Object? arguments}) =>
-      Navigator.of(this).pushNamedAndRemoveUntil<T>(routeName, (route) => false, arguments: arguments);
+  Future<T?> toNamedRemoveUntil<T extends Object?>(String routeName,
+          {Object? arguments}) =>
+      Navigator.of(this).pushNamedAndRemoveUntil<T>(routeName, (route) => false,
+          arguments: arguments);
 
   /// Replaces the current route with a new named route.
-  Future<T?> toNamedReplace<T extends Object?, TO extends Object?>(String routeName, {Object? arguments}) =>
-      Navigator.of(this).pushReplacementNamed<T, TO>(routeName, arguments: arguments);
+  Future<T?> toNamedReplace<T extends Object?, TO extends Object?>(
+          String routeName,
+          {Object? arguments}) =>
+      Navigator.of(this)
+          .pushReplacementNamed<T, TO>(routeName, arguments: arguments);
 
-  void toNamedRemoveUntilReplace(String route) => Navigator.of(this).pushNamedAndRemoveUntil(route, (route) => false);
+  void toNamedRemoveUntilReplace(String route) =>
+      Navigator.of(this).pushNamedAndRemoveUntil(route, (route) => false);
 }
 
 /// Provides convenient methods for showing snackbars.
@@ -78,12 +88,13 @@ extension ContextSnackBar on BuildContext {
   void hideSnackBar() => ScaffoldMessenger.of(this).hideCurrentSnackBar();
 
   /// Shows a success snackbar with a default message and colors.
-  void showSuccess([String msg = 'Success']) =>
-      showSnackBar(msg, foreground: colors.onPrimary, background: colors.primary);
+  void showSuccess([String msg = 'Success']) => showSnackBar(msg,
+      foreground: colors.onPrimary, background: colors.primary);
 
   /// Shows an error snackbar with a default message and colors.
-  void showError([String msg = 'Error']) =>
-      showSnackBar(msg, foreground: colors.onError, background: colors.error); // Use colorScheme getter
+  void showError([String msg = 'Error']) => showSnackBar(msg,
+      foreground: colors.onError,
+      background: colors.error); // Use colorScheme getter
 
   /// Shows a customizable snackbar.
   /// [msg] is the text content of the snackbar.
@@ -110,7 +121,6 @@ extension ContextSnackBar on BuildContext {
 
     if (hideCurrent) scaffoldMessenger.hideCurrentSnackBar();
 
-
     scaffoldMessenger.showSnackBar(SnackBar(
       behavior: behavior,
       closeIconColor: foreground,
@@ -119,7 +129,8 @@ extension ContextSnackBar on BuildContext {
       backgroundColor: background,
       duration: Duration(milliseconds: durationMilliseconds),
       margin: margin,
-      content: Text(msg, style: textStyle ?? styles.labelLarge?.copyWith(color: foreground)),
+      content: Text(msg,
+          style: textStyle ?? styles.labelLarge?.copyWith(color: foreground)),
     ));
   }
 }
@@ -144,4 +155,3 @@ extension ContextFocusExtension on BuildContext {
   /// Hides the software keyboard.
   void hideKeyboard() => FocusManager.instance.primaryFocus?.unfocus();
 }
-

@@ -26,5 +26,6 @@ extension DurationExtension on Duration {
   Duration multiplyBy(int factor) => this * factor;
 
   /// Returns a new Duration that is this duration divided by [factor].
-  Duration divideBy(double factor) => Duration(microseconds: (inMicroseconds / factor).round());
+  Duration divideBy(double factor) =>
+      Duration(microseconds: (inMicroseconds / factor).round());
 }

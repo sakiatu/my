@@ -326,24 +326,36 @@ class MyButton extends StatelessWidget {
       return Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [_buildIcon(context), const SizedBox(width: 8), _buildLabel(context)]);
+          children: [
+            _buildIcon(context),
+            const SizedBox(width: 8),
+            _buildLabel(context)
+          ]);
     }
     return iconOnly ? _buildIcon(context) : _buildLabel(context);
   }
 
   Widget _buildLoader(BuildContext context) {
     final Color color;
-    if (_variant case _Variant.danger || _Variant.tonalDanger || _Variant.outlinedDanger || _Variant.textDanger) {
+    if (_variant
+        case _Variant.danger ||
+            _Variant.tonalDanger ||
+            _Variant.outlinedDanger ||
+            _Variant.textDanger) {
       color = Theme.of(context).colorScheme.error;
     } else {
       color = Theme.of(context).colorScheme.primary;
     }
-    return SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2.5, color: color));
+    return SizedBox(
+        width: 24,
+        height: 24,
+        child: CircularProgressIndicator(strokeWidth: 2.5, color: color));
   }
 
   Widget _buildIcon(BuildContext context) => Icon(icon, color: iconColor);
 
-  Widget _buildLabel(BuildContext context) => Text(label ?? 'Button Text Here', style: labelStyle);
+  Widget _buildLabel(BuildContext context) =>
+      Text(label ?? 'Button Text Here', style: labelStyle);
 
   ButtonStyle _getButtonStyle(BuildContext context) {
     final color = Theme.of(context).colorScheme;
@@ -360,7 +372,9 @@ class MyButton extends StatelessWidget {
 
       case _Variant.text:
         return TextButton.styleFrom(
-            foregroundColor: color.primary, backgroundColor: Colors.transparent, minimumSize: size);
+            foregroundColor: color.primary,
+            backgroundColor: Colors.transparent,
+            minimumSize: size);
 
       case _Variant.outlined:
         return OutlinedButton.styleFrom(
@@ -370,15 +384,22 @@ class MyButton extends StatelessWidget {
             minimumSize: size);
 
       case _Variant.danger:
-        return FilledButton.styleFrom(foregroundColor: color.onError, backgroundColor: color.error, minimumSize: size);
+        return FilledButton.styleFrom(
+            foregroundColor: color.onError,
+            backgroundColor: color.error,
+            minimumSize: size);
 
       case _Variant.tonalDanger:
         return FilledButton.styleFrom(
-            foregroundColor: color.onErrorContainer, backgroundColor: color.errorContainer, minimumSize: size);
+            foregroundColor: color.onErrorContainer,
+            backgroundColor: color.errorContainer,
+            minimumSize: size);
 
       case _Variant.textDanger:
         return TextButton.styleFrom(
-            foregroundColor: color.error, backgroundColor: Colors.transparent, minimumSize: size);
+            foregroundColor: color.error,
+            backgroundColor: Colors.transparent,
+            minimumSize: size);
 
       case _Variant.outlinedDanger:
         return OutlinedButton.styleFrom(
@@ -397,26 +418,37 @@ class MyButton extends StatelessWidget {
 
     if (iconOnly) {
       return switch (_variant) {
-        _Variant.elevated => ElevatedButton(onPressed: action, style: style, child: content),
-        _Variant.filled || _Variant.danger => IconButton.filled(onPressed: action, style: style, icon: content),
-        _Variant.tonal ||
-        _Variant.tonalDanger =>
-          IconButton.filledTonal(onPressed: action, style: style, icon: content),
+        _Variant.elevated =>
+          ElevatedButton(onPressed: action, style: style, child: content),
+        _Variant.filled ||
+        _Variant.danger =>
+          IconButton.filled(onPressed: action, style: style, icon: content),
+        _Variant.tonal || _Variant.tonalDanger => IconButton.filledTonal(
+            onPressed: action, style: style, icon: content),
         _Variant.outlined ||
         _Variant.outlinedDanger =>
           IconButton.outlined(onPressed: action, style: style, icon: content),
-        _Variant.text ||
-        _Variant.textDanger =>
-          TextButton.icon(onPressed: action, style: style, icon: content, label: _buildLabel(context)),
+        _Variant.text || _Variant.textDanger => TextButton.icon(
+            onPressed: action,
+            style: style,
+            icon: content,
+            label: _buildLabel(context)),
         _ => IconButton(onPressed: action, style: style, icon: content),
       };
     }
 
     return switch (_variant) {
-      _Variant.elevated => ElevatedButton(onPressed: action, style: style, child: content),
-      _Variant.text || _Variant.textDanger => TextButton(onPressed: action, style: style, child: content),
-      _Variant.tonal || _Variant.tonalDanger => FilledButton.tonal(onPressed: action, style: style, child: content),
-      _Variant.outlined || _Variant.outlinedDanger => OutlinedButton(onPressed: action, style: style, child: content),
+      _Variant.elevated =>
+        ElevatedButton(onPressed: action, style: style, child: content),
+      _Variant.text ||
+      _Variant.textDanger =>
+        TextButton(onPressed: action, style: style, child: content),
+      _Variant.tonal ||
+      _Variant.tonalDanger =>
+        FilledButton.tonal(onPressed: action, style: style, child: content),
+      _Variant.outlined ||
+      _Variant.outlinedDanger =>
+        OutlinedButton(onPressed: action, style: style, child: content),
       _ => FilledButton(onPressed: action, style: style, child: content),
     };
   }

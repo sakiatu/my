@@ -50,9 +50,12 @@ class MyLoader extends StatelessWidget {
       valueColor: AlwaysStoppedAnimation<Color>(color ?? primaryColor),
       strokeWidth: strokeWidth,
       value: value,
-      backgroundColor: backgroundColor ?? primaryColor.withAlpha((0.3 * 255).toInt()),
+      backgroundColor:
+          backgroundColor ?? primaryColor.withAlpha((0.3 * 255).toInt()),
     );
 
-    return size == null ? loader : SizedBox(width: size, height: size, child: loader);
+    return size == null
+        ? loader
+        : SizedBox(width: size, height: size, child: loader);
   }
 }

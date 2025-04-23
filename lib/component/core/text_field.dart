@@ -29,8 +29,10 @@ class MyTextField extends StatelessWidget {
     this.textCapitalization = TextCapitalization.sentences, // Sensible default
     this.inputDecoration, // Allow providing a full custom decoration
     this.hintStyle, // Allow overriding hint style
-  })  : assert(prefixIcon == null || iconData == null, 'Cannot provide both prefixIcon and iconData'),
-        assert(suffixIcon == null || suffixWidget == null, 'Cannot provide both suffixIcon and suffixWidget');
+  })  : assert(prefixIcon == null || iconData == null,
+            'Cannot provide both prefixIcon and iconData'),
+        assert(suffixIcon == null || suffixWidget == null,
+            'Cannot provide both suffixIcon and suffixWidget');
 
   /// Controls the text being edited.
   final TextEditingController? controller;
@@ -113,7 +115,8 @@ class MyTextField extends StatelessWidget {
           labelText: label,
           hintText: hint,
           hintStyle: hintStyle ??
-              inputDecorationTheme.hintStyle?.copyWith(fontVariations: const [FontVariation.weight(450)]) ??
+              inputDecorationTheme.hintStyle?.copyWith(
+                  fontVariations: const [FontVariation.weight(450)]) ??
               const TextStyle(fontVariations: [FontVariation.weight(450)]),
           prefixIcon: prefixIcon ?? (iconData != null ? Icon(iconData) : null),
           suffixIcon: suffixIcon,

@@ -14,14 +14,16 @@ class Day implements Comparable<Day> {
   /// Throws ArgumentError if the [value] is not between 1 and 31.
   Day(this.value) {
     if (value < 1 || value > 31) {
-      throw ArgumentError('Invalid day number: $value. Must be between 1 and 31.');
+      throw ArgumentError(
+          'Invalid day number: $value. Must be between 1 and 31.');
     }
   }
 
   /// Creates a Day instance from a standard Dart DateTime object.
   factory Day.fromDateTime(DateTime dateTime) => Day(dateTime.day);
 
-  Day clamp(Year year, Month month) => Day(value.clamp(1, month.daysCount(year)));
+  Day clamp(Year year, Month month) =>
+      Day(value.clamp(1, month.daysCount(year)));
 
   @override
   int get hashCode => value.hashCode;
@@ -39,7 +41,8 @@ class Day implements Comparable<Day> {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is Day && runtimeType == other.runtimeType && value == other.value;
+      identical(this, other) ||
+      other is Day && runtimeType == other.runtimeType && value == other.value;
 
   /// Checks if this day is strictly before another day.
   bool operator <(Day other) => value < other.value;

@@ -26,7 +26,8 @@ class Year implements Comparable<Year> {
   ///
   /// A year is a leap year if it is divisible by 4,
   /// except for end-of-century years, which must be divisible by 400.
-  bool get isLeapYear => (value % 4 == 0) && ((value % 100 != 0) || (value % 400 == 0));
+  bool get isLeapYear =>
+      (value % 4 == 0) && ((value % 100 != 0) || (value % 400 == 0));
 
   /// Returns the next year.
   Year get next => Year(value + 1);
@@ -39,11 +40,10 @@ class Year implements Comparable<Year> {
   /// Returns the number of days in this year (366 for leap years, 365 otherwise).
   int get daysInYear => isLeapYear ? 366 : 365;
 
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Year && runtimeType == other.runtimeType && value == other.value;
+      other is Year && runtimeType == other.runtimeType && value == other.value;
 
   @override
   int get hashCode => value.hashCode;

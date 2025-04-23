@@ -27,7 +27,11 @@ class MySkeleton extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-          color: color ?? Theme.of(context).colorScheme.onSurface.withAlpha((0.38*255).toInt()),
+          color: color ??
+              Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withAlpha((0.38 * 255).toInt()),
           borderRadius: BorderRadius.circular(cornerRadius)),
       child: child);
 }

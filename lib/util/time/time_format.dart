@@ -1,4 +1,3 @@
-
 /// A utility class containing common, fixed date and time format strings
 /// as static constants.
 ///
@@ -73,7 +72,6 @@ class TimeFormat {
   /// example: Tue, 08 Apr 2025 01:52:05 PM (Readable, 12h Time)
   static const String EEEddMMMyyyyhhmmssa = 'EEE, dd MMM yyyy hh:mm:ss a';
 
-
   /// example: 2025-04-08T13:52:05Z (UTC)
   static const String iso8601UTC = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 
@@ -112,4 +110,3 @@ class TimeFormat {
   /// Private constructor to prevent instantiation of this utility class.
   TimeFormat._();
 }
-

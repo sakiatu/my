@@ -77,7 +77,8 @@ class Month implements Comparable<Month> {
   /// Throws ArgumentError if the input is not between 1 and 12.
   factory Month(int value) {
     if (value < 1 || value > 12) {
-      throw ArgumentError('Invalid month number: $value. Must be between 1 (January) and 12 (December).');
+      throw ArgumentError(
+          'Invalid month number: $value. Must be between 1 (January) and 12 (December).');
     }
     return values[value - 1];
   }
@@ -86,7 +87,8 @@ class Month implements Comparable<Month> {
   Month get next => values[value % 12]; // 1%12=1 (Feb), 12%12=0 (Jan)
 
   /// Returns the previous month. Wraps around from January to December.
-  Month get previous => values[(value - 2 + 12) % 12]; // (1-2+12)%12 = 11 (Dec), (12-2+12)%12 = 10 (Nov)
+  Month get previous => values[
+      (value - 2 + 12) % 12]; // (1-2+12)%12 = 11 (Dec), (12-2+12)%12 = 10 (Nov)
 
   /// Returns the number of days in this month for the given [year].
   /// Accounts for leap years for February.
@@ -98,14 +100,31 @@ class Month implements Comparable<Month> {
 
   int daysCount(Year year) => daysInMonth(year, this);
 
-  static const _daysInMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  static const _daysInMonth = [
+    0,
+    31,
+    28,
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31
+  ];
 
   static int daysInMonth(Year year, Month month) =>
       month == february && year.isLeapYear ? 29 : _daysInMonth[month.value];
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is Month && runtimeType == other.runtimeType && value == other.value;
+      identical(this, other) ||
+      other is Month &&
+          runtimeType == other.runtimeType &&
+          value == other.value;
 
   @override
   int get hashCode => value.hashCode;

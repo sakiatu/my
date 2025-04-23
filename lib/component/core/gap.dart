@@ -13,7 +13,8 @@ class Gap extends StatelessWidget {
   const Gap([this.width = 16, this.height = 16, Key? key]) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => SizedBox(key: key, width: width, height: height);
+  Widget build(BuildContext context) =>
+      SizedBox(key: key, width: width, height: height);
 }
 
 /// A simple spacing widget that provides horizontal space only.

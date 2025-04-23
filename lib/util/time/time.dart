@@ -167,16 +167,19 @@ class Time implements Comparable<Time> {
   // --- Start/End of Day ---
 
   /// Returns a new [Time] instance representing the start of the day (00:00:00.000000).
-  Time get startOfDay => Time(_dateTime.copyWith(hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0));
+  Time get startOfDay => Time(_dateTime.copyWith(
+      hour: 0, minute: 0, second: 0, millisecond: 0, microsecond: 0));
 
   /// Returns a new [Time] instance representing the very end of the day (23:59:59.999999).
-  Time get endOfDay => Time(_dateTime.copyWith(hour: 23, minute: 59, second: 59, millisecond: 999, microsecond: 999));
+  Time get endOfDay => Time(_dateTime.copyWith(
+      hour: 23, minute: 59, second: 59, millisecond: 999, microsecond: 999));
 
   // --- Comparison Methods ---
 
   /// Checks if this [Time] instance represents the same calendar day as [other].
   /// Ignores the time part.
-  bool isSameDay(Time other) => year == other.year && month == other.month && day == other.day;
+  bool isSameDay(Time other) =>
+      year == other.year && month == other.month && day == other.day;
 
   /// Checks if this [Time] instance is in the same calendar month as [other].
   /// Ignores day and time parts.
@@ -195,14 +198,20 @@ class Time implements Comparable<Time> {
   ///
   /// By default, the range is inclusive of the start time and exclusive of the end time.
   /// Use [inclusiveStart] and [inclusiveEnd] to control boundary behavior.
-  bool isInRange(Time start, Time end, {bool inclusiveStart = true, bool inclusiveEnd = true}) {
-    bool afterStart = inclusiveStart ? !isBefore(start) : isAfter(start); // !isBefore includes same moment
-    bool beforeEnd = inclusiveEnd ? !isAfter(end) : isBefore(end); // !isAfter includes same moment
+  bool isInRange(Time start, Time end,
+      {bool inclusiveStart = true, bool inclusiveEnd = true}) {
+    bool afterStart = inclusiveStart
+        ? !isBefore(start)
+        : isAfter(start); // !isBefore includes same moment
+    bool beforeEnd = inclusiveEnd
+        ? !isAfter(end)
+        : isBefore(end); // !isAfter includes same moment
     return afterStart && beforeEnd;
   }
 
   /// Checks if this time instance represents the exact same moment as [other].
-  bool isAtSameMomentAs(Time other) => _dateTime.isAtSameMomentAs(other._dateTime);
+  bool isAtSameMomentAs(Time other) =>
+      _dateTime.isAtSameMomentAs(other._dateTime);
 
   // --- Duration & Manipulation Methods ---
 
@@ -216,10 +225,12 @@ class Time implements Comparable<Time> {
   Time addHours(int hours) => Time(_dateTime.add(Duration(hours: hours)));
 
   /// Returns a new [Time] instance with the specified number of [minutes] added.
-  Time addMinutes(int minutes) => Time(_dateTime.add(Duration(minutes: minutes)));
+  Time addMinutes(int minutes) =>
+      Time(_dateTime.add(Duration(minutes: minutes)));
 
   /// Returns a new [Time] instance with the specified number of [seconds] added.
-  Time addSeconds(int seconds) => Time(_dateTime.add(Duration(seconds: seconds)));
+  Time addSeconds(int seconds) =>
+      Time(_dateTime.add(Duration(seconds: seconds)));
 
   /// Returns a new [Time] instance with the given [duration] subtracted.
   Time subtract(Duration duration) => Time(_dateTime.subtract(duration));
@@ -228,13 +239,16 @@ class Time implements Comparable<Time> {
   Time subtractDays(int days) => Time(_dateTime.subtract(Duration(days: days)));
 
   /// Returns a new [Time] instance with the specified number of [hours] subtracted.
-  Time subtractHours(int hours) => Time(_dateTime.subtract(Duration(hours: hours)));
+  Time subtractHours(int hours) =>
+      Time(_dateTime.subtract(Duration(hours: hours)));
 
   /// Returns a new [Time] instance with the specified number of [minutes] subtracted.
-  Time subtractMinutes(int minutes) => Time(_dateTime.subtract(Duration(minutes: minutes)));
+  Time subtractMinutes(int minutes) =>
+      Time(_dateTime.subtract(Duration(minutes: minutes)));
 
   /// Returns a new [Time] instance with the specified number of [seconds] subtracted.
-  Time subtractSeconds(int seconds) => Time(_dateTime.subtract(Duration(seconds: seconds)));
+  Time subtractSeconds(int seconds) =>
+      Time(_dateTime.subtract(Duration(seconds: seconds)));
 
   // --- Time Zone Methods ---
 
@@ -343,7 +357,9 @@ class Time implements Comparable<Time> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is Time && runtimeType == other.runtimeType && _dateTime == other._dateTime; // Compare underlying DateTime
+      other is Time &&
+          runtimeType == other.runtimeType &&
+          _dateTime == other._dateTime; // Compare underlying DateTime
 
   /// Returns the hash code for this time instance.
   @override

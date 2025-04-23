@@ -27,7 +27,8 @@ extension StringExtension on String {
   /// Note: This is a basic regex check. For robust validation, consider a dedicated package.
   bool get isValidEmail {
     // Basic regex for demonstration.
-    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    final emailRegex =
+        RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     return emailRegex.hasMatch(this);
   }
 
@@ -208,7 +209,6 @@ extension StringExtension on String {
     }
   }
 
-
   /// Checks if string is a palindrome (reads the same forwards and backwards)
   ///
   /// Example:
@@ -234,7 +234,8 @@ extension StringExtension on String {
   /// "Hello world".wordCount; // Returns 2
   /// "  Multiple   spaces   between  ".wordCount; // Returns 3
   /// ```
-  int get wordCount => trim().split(RegExp(r'\s+')).where((word) => word.isNotEmpty).length;
+  int get wordCount =>
+      trim().split(RegExp(r'\s+')).where((word) => word.isNotEmpty).length;
 
   /// Converts a string into a URL-friendly slug
   ///
@@ -243,7 +244,10 @@ extension StringExtension on String {
   /// "Hello World!".toSlug(); // Returns "hello-world"
   /// "Product Name (2023)".toSlug(); // Returns "product-name-2023"
   /// ```
-  String toSlug() => toLowerCase().trim().replaceAll(RegExp(r'[^\w\s-]'), '').replaceAll(RegExp(r'\s+'), '-');
+  String toSlug() => toLowerCase()
+      .trim()
+      .replaceAll(RegExp(r'[^\w\s-]'), '')
+      .replaceAll(RegExp(r'\s+'), '-');
 
   /// Extracts hashtags from text
   ///
@@ -252,7 +256,8 @@ extension StringExtension on String {
   /// "I love #flutter and #dart programming".extractHashtags; // Returns ["#flutter", "#dart"]
   /// "No hashtags here".extractHashtags; // Returns []
   /// ```
-  List<String> get extractHashtags => RegExp(r'#(\w+)').allMatches(this).map((m) => m.group(0)!).toList();
+  List<String> get extractHashtags =>
+      RegExp(r'#(\w+)').allMatches(this).map((m) => m.group(0)!).toList();
 
   /// Safely accesses a character by index, returns null if index is out of bounds
   ///
@@ -261,7 +266,8 @@ extension StringExtension on String {
   /// "hello".charAt(1); // Returns "e"
   /// "hello".charAt(10); // Returns null
   /// ```
-  String? charAt(int index) => (index >= 0 && index < length) ? this[index] : null;
+  String? charAt(int index) =>
+      (index >= 0 && index < length) ? this[index] : null;
 
   /// Converts string to proper title case handling articles, conjunctions, and prepositions
   ///
@@ -360,7 +366,8 @@ extension StringExtension on String {
   /// // Returns ["support@example.com", "info@example.com"]
   /// ```
   List<String> get extractEmails {
-    final regex = RegExp(r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b', caseSensitive: false);
+    final regex = RegExp(r'\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b',
+        caseSensitive: false);
     return regex.allMatches(this).map((m) => m.group(0)!).toList();
   }
 
@@ -380,7 +387,8 @@ extension StringExtension on String {
   /// "HelloWorld123".isAlphanumeric; // Returns true
   /// "Hello_123".isAlphanumeric; // Returns false
   /// ```
-  bool get isAlphanumeric => isNotEmpty && RegExp(r'^[a-zA-Z0-9]+$').hasMatch(this);
+  bool get isAlphanumeric =>
+      isNotEmpty && RegExp(r'^[a-zA-Z0-9]+$').hasMatch(this);
 
   /// Formats string as a phone number based on length
   ///

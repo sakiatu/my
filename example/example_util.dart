@@ -17,8 +17,9 @@ class ExampleUtilWidget extends StatelessWidget {
     final formatted = now.toString();
 
     // Example: Validator usage
-    final validator =
-        MyFormFieldValidator().add(RequiredRule(message: 'Required')).add(MinLengthRule(3, message: 'Min 3 chars'));
+    final validator = MyFormFieldValidator()
+        .add(RequiredRule(message: 'Required'))
+        .add(MinLengthRule(3, message: 'Min 3 chars'));
     final error = validator.getValidator()("");
 
     return Column(

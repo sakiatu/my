@@ -1186,7 +1186,8 @@ class MyText extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     // Determine the base style from the theme based on the semantic style type.
-    final baseStyle = _semanticStyleType?.style(textTheme).merge(style) ?? const TextStyle();
+    final baseStyle =
+        _semanticStyleType?.style(textTheme).merge(style) ?? const TextStyle();
 
     // Apply individual styling parameters, overriding the merged style
     final effectiveStyle = baseStyle.copyWith(

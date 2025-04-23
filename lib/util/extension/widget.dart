@@ -10,32 +10,42 @@ extension WidgetExtension on Widget {
   Widget expand([int flex = 1]) => Expanded(flex: flex, child: this);
 
   /// Wraps the widget in an [Opacity] widget.
-  Widget opacity([double opacity = 1.0]) => Opacity(opacity: opacity, child: this);
+  Widget opacity([double opacity = 1.0]) =>
+      Opacity(opacity: opacity, child: this);
 
   /// Wraps the widget in a [Visibility] widget.
-  Widget visible([bool visible = true]) => Visibility(visible: visible, child: this);
+  Widget visible([bool visible = true]) =>
+      Visibility(visible: visible, child: this);
 
   /// Wraps the widget in an [Align] widget with the given alignment.
-  Widget align([Alignment alignment = Alignment.center]) => Align(alignment: alignment, child: this);
+  Widget align([Alignment alignment = Alignment.center]) =>
+      Align(alignment: alignment, child: this);
 
   /// Wraps the widget in a [MyLoadingEffect] widget.
   Widget loadingEffect() => MyLoadingEffect(child: this);
 
   /// Wraps the widget in a [GestureDetector] for tap detection.
-  Widget onTap(void Function()? onTap) => GestureDetector(onTap: onTap, child: this);
+  Widget onTap(void Function()? onTap) =>
+      GestureDetector(onTap: onTap, child: this);
 
   /// Wraps the widget in a [SingleChildScrollView] for horizontal scrolling.
-  Widget scrollableX() => SingleChildScrollView(scrollDirection: Axis.horizontal, child: this);
+  Widget scrollableX() =>
+      SingleChildScrollView(scrollDirection: Axis.horizontal, child: this);
 
   /// Wraps the widget in a [SingleChildScrollView] for vertical scrolling.
-  Widget scrollableY() => SingleChildScrollView(scrollDirection: Axis.vertical, child: this);
+  Widget scrollableY() =>
+      SingleChildScrollView(scrollDirection: Axis.vertical, child: this);
 
   /// Applies padding to all sides of the widget.
-  Widget p([double n = 16.0]) => Padding(padding: EdgeInsets.all(n), child: this);
+  Widget p([double n = 16.0]) =>
+      Padding(padding: EdgeInsets.all(n), child: this);
 
   /// Applies padding to specific sides of the widget.
-  Widget pOnly({double l = 0.0, double t = 0.0, double r = 0.0, double b = 0.0}) =>
-      Padding(padding: EdgeInsets.only(left: l, top: t, right: r, bottom: b), child: this);
+  Widget pOnly(
+          {double l = 0.0, double t = 0.0, double r = 0.0, double b = 0.0}) =>
+      Padding(
+          padding: EdgeInsets.only(left: l, top: t, right: r, bottom: b),
+          child: this);
 
   /// Applies horizontal padding to the widget.
   Widget px([double x = 16.0]) => pOnly(l: x, r: x);
@@ -44,7 +54,8 @@ extension WidgetExtension on Widget {
   Widget py([double y = 16.0]) => pOnly(t: y, b: y);
 
   /// Applies horizontal and vertical padding respectively to the widget.
-  Widget pxy([double x = 16.0, double y = 16.0]) => pOnly(l: x, t: y, r: x, b: y);
+  Widget pxy([double x = 16.0, double y = 16.0]) =>
+      pOnly(l: x, t: y, r: x, b: y);
 
   /// Applies left padding to the widget.
   Widget pl([double n = 16.0]) => pOnly(l: n);
@@ -58,13 +69,16 @@ extension WidgetExtension on Widget {
   /// Applies bottom padding to the widget.
   Widget pb([double n = 16.0]) => pOnly(b: n);
 
-
   /// Wraps the widget in a [Container] with margin on all sides.
-  Widget m([double n = 16.0]) => Container(margin: EdgeInsets.all(n), child: this);
+  Widget m([double n = 16.0]) =>
+      Container(margin: EdgeInsets.all(n), child: this);
 
   /// Applies margin to specific sides of the widget.
-  Widget mOnly({double l = 0.0, double t = 0.0, double r = 0.0, double b = 0.0}) =>
-      Container(margin: EdgeInsets.only(left: l, top: t, right: r, bottom: b), child: this);
+  Widget mOnly(
+          {double l = 0.0, double t = 0.0, double r = 0.0, double b = 0.0}) =>
+      Container(
+          margin: EdgeInsets.only(left: l, top: t, right: r, bottom: b),
+          child: this);
 
   /// Applies horizontal margin to the widget.
   Widget mx([double x = 16.0]) => mOnly(l: x, r: x);
@@ -73,7 +87,8 @@ extension WidgetExtension on Widget {
   Widget my([double y = 16.0]) => mOnly(t: y, b: y);
 
   /// Applies horizontal and vertical margin respectively to the widget.
-  Widget mxy([double x = 16.0, double y = 16.0]) => mOnly(l: x, t: y, r: x, b: y);
+  Widget mxy([double x = 16.0, double y = 16.0]) =>
+      mOnly(l: x, t: y, r: x, b: y);
 
   /// Applies left margin to the widget.
   Widget ml([double n = 16.0]) => mOnly(l: n);
@@ -87,16 +102,17 @@ extension WidgetExtension on Widget {
   /// Applies bottom margin to the widget.
   Widget mb([double n = 16.0]) => mOnly(b: n);
 
-
-
   /// Wraps the widget in a [SizedBox] to set its width.
-  Widget width([double value = double.infinity]) => SizedBox(width: value, child: this);
+  Widget width([double value = double.infinity]) =>
+      SizedBox(width: value, child: this);
 
   /// Wraps the widget in a [SizedBox] to set its height.
-  Widget height([double value = double.infinity]) => SizedBox(height: value, child: this);
+  Widget height([double value = double.infinity]) =>
+      SizedBox(height: value, child: this);
 
   /// Wraps the widget in a [SizedBox] to set its size (width and height).
-  Widget size([double value = double.infinity]) => SizedBox(width: value, height: value, child: this);
+  Widget size([double value = double.infinity]) =>
+      SizedBox(width: value, height: value, child: this);
 
   /// Wraps the widget in a [ConstrainedBox] to apply constraints.
   Widget constrained({
@@ -116,26 +132,34 @@ extension WidgetExtension on Widget {
       );
 
   /// Wraps the widget in a [DecoratedBox] with the given decoration.
-  Widget decorated({required Decoration decoration}) => DecoratedBox(decoration: decoration, child: this);
+  Widget decorated({required Decoration decoration}) =>
+      DecoratedBox(decoration: decoration, child: this);
 
   /// Wraps the widget in a [ClipRRect] with the given border radius.
-  Widget clippedRRect({required BorderRadiusGeometry borderRadius, Clip clipBehavior = Clip.antiAlias}) =>
-      ClipRRect(borderRadius: borderRadius, clipBehavior: clipBehavior, child: this);
+  Widget clippedRRect(
+          {required BorderRadiusGeometry borderRadius,
+          Clip clipBehavior = Clip.antiAlias}) =>
+      ClipRRect(
+          borderRadius: borderRadius, clipBehavior: clipBehavior, child: this);
 
   /// Wraps the widget in a [ClipOval] for an oval or circular clip.
-  Widget clippedOval({Clip clipBehavior = Clip.antiAlias}) => ClipOval(clipBehavior: clipBehavior, child: this);
+  Widget clippedOval({Clip clipBehavior = Clip.antiAlias}) =>
+      ClipOval(clipBehavior: clipBehavior, child: this);
 
   /// Wraps the widget in a [Tooltip] to display a message on long press or hover.
   Widget tooltip(String message) => Tooltip(message: message, child: this);
 
   /// Wraps the widget in a [RotatedBox] to rotate it by a quarter turn.
-  Widget rotated({required int quarterTurns}) => RotatedBox(quarterTurns: quarterTurns, child: this);
+  Widget rotated({required int quarterTurns}) =>
+      RotatedBox(quarterTurns: quarterTurns, child: this);
 
   /// Wraps the widget in an [AspectRatio] widget.
-  Widget withAspectRatio({required double aspectRatio}) => AspectRatio(aspectRatio: aspectRatio, child: this);
+  Widget withAspectRatio({required double aspectRatio}) =>
+      AspectRatio(aspectRatio: aspectRatio, child: this);
 
   /// Wraps the widget in a [Flexible] widget with the given flex and fit.
-  Widget flexible({int flex = 1, FlexFit fit = FlexFit.loose}) => Flexible(flex: flex, fit: fit, child: this);
+  Widget flexible({int flex = 1, FlexFit fit = FlexFit.loose}) =>
+      Flexible(flex: flex, fit: fit, child: this);
 
   /// Wraps the widget in a [Positioned] widget for use in a [Stack].
   Widget positioned({
@@ -163,11 +187,18 @@ extension WidgetExtension on Widget {
   Widget hero({required String tag}) => Hero(tag: tag, child: this);
 
   /// Wraps the widget in an [AnimatedOpacity] for animated opacity changes.
-  Widget animatedOpacity({required double opacity, required Duration duration, Curve curve = Curves.linear}) =>
-      AnimatedOpacity(opacity: opacity, duration: duration, curve: curve, child: this);
+  Widget animatedOpacity(
+          {required double opacity,
+          required Duration duration,
+          Curve curve = Curves.linear}) =>
+      AnimatedOpacity(
+          opacity: opacity, duration: duration, curve: curve, child: this);
 
   /// Wraps the widget in an [AnimatedSize] for animated size changes.
   Widget animatedSize(
-          {required Duration duration, Curve curve = Curves.linear, AlignmentGeometry alignment = Alignment.center}) =>
-      AnimatedSize(duration: duration, curve: curve, alignment: alignment, child: this);
+          {required Duration duration,
+          Curve curve = Curves.linear,
+          AlignmentGeometry alignment = Alignment.center}) =>
+      AnimatedSize(
+          duration: duration, curve: curve, alignment: alignment, child: this);
 }
