@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// Defines the visual style variants for [MyButton].
+///
+/// These control the color, elevation, and border of the button.
 enum _Variant {
   normal,
   filled,
@@ -13,6 +16,19 @@ enum _Variant {
   outlinedDanger,
 }
 
+/// A highly customizable button widget supporting multiple visual variants.
+///
+/// [MyButton] provides a unified API for different Material button styles such as filled, elevated, tonal, text, outlined, and danger variants.
+/// It supports icons, loading states, full-width layout, and enables easy switching between styles using named constructors.
+///
+/// Example usage:
+/// ```dart
+/// MyButton(
+///   label: 'Submit',
+///   icon: Icons.send,
+///   onPressed: () {},
+/// )
+/// ```
 class MyButton extends StatelessWidget {
   final String? label;
   final double height;
@@ -29,6 +45,7 @@ class MyButton extends StatelessWidget {
   final bool labelOnly;
   final bool iconWithLabel;
 
+  /// Internal constructor for [MyButton]. Use named constructors for different styles.
   const MyButton._({
     super.key,
     this.label,
@@ -49,6 +66,7 @@ class MyButton extends StatelessWidget {
         iconOnly = icon != null && label == null,
         labelOnly = label != null && icon == null;
 
+  /// Creates a filled [MyButton] (default Material style).
   factory MyButton({
     Key? key,
     String? label,
@@ -73,6 +91,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates a filled [MyButton] with primary color background.
   factory MyButton.filled({
     Key? key,
     String? label,
@@ -97,6 +116,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates an elevated [MyButton] with shadow and primary color background.
   factory MyButton.elevated({
     Key? key,
     String? label,
@@ -121,6 +141,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates a tonal [MyButton] with a secondary color background.
   factory MyButton.tonal({
     Key? key,
     String? label,
@@ -145,6 +166,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates a text [MyButton] with no background or border.
   factory MyButton.text({
     Key? key,
     String? label,
@@ -169,6 +191,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates an outlined [MyButton] with a border and no fill.
   factory MyButton.outlined({
     Key? key,
     String? label,
@@ -195,6 +218,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates a filled [MyButton] with error color for destructive actions.
   factory MyButton.danger({
     Key? key,
     String? label,
@@ -219,6 +243,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates a tonal [MyButton] with error container color for warnings.
   factory MyButton.tonalDanger({
     Key? key,
     String? label,
@@ -243,6 +268,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates a text [MyButton] with error color for warnings.
   factory MyButton.textDanger({
     Key? key,
     String? label,
@@ -267,6 +293,7 @@ class MyButton extends StatelessWidget {
         fullWidth: fullWidth,
       );
 
+  /// Creates an outlined [MyButton] with error color border for warnings.
   factory MyButton.outlinedDanger({
     Key? key,
     String? label,

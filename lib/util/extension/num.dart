@@ -1,6 +1,4 @@
-import 'dart:async';
-import 'dart:math';
-import 'dart:math' as math; // Import for sqrt and pow
+import 'dart:math' as math;
 
 /// Provides convenient properties and methods for num (int and double).
 extension NumExtension on num {

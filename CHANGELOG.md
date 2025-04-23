@@ -13,3 +13,8 @@ All notable changes to this project will be documented in this file.
 - Loading indicators: loading effect, skeleton, and loader
 - Utility extensions for collections, strings, time, and widgets
 - Form field validation utilities
+
+
+## [1.0.1] - 2025-04-23
+### Added
+- example
