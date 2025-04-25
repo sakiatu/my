@@ -18,3 +18,7 @@ All notable changes to this project will be documented in this file.
 ## [1.0.1] - 2025-04-23
 ### Added
 - example
+
+## [1.1.0] - 2025-04-26
+### Added
+- Highly Customizable Image widget (`MyImage`) with network and asset

@@ -15,7 +15,7 @@ A modern, flexible, and developer-friendly collection of UI components for Flutt
 
 Run the following command:
 ```sh
-flutter pub get my
+flutter pub add my
 ```
 
 ## Usage
